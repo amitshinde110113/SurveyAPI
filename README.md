@@ -4,15 +4,15 @@ How to setup
  -Go inside project folder and do `npm i` 
  
 How to run
-  -npm start
+  -`npm start`
   
 how to test
-   -npm test
+   -`npm test`
     
  how to use API
  
- *********User Model **********
- login
+ #*********User Model **********
+ ##login
  
  request- POST
  url:http://localhost:3000/users/login
@@ -21,7 +21,7 @@ how to test
     "password":"demo123"
     }
  
-Signup
+##Signup
  
  request- POST
   url:http://localhost:3000/users/signup
@@ -32,11 +32,11 @@ Signup
     }
     
     
-    *********Survey Model ********** 
+   ## *********Survey Model ********** 
     Authorization header required for all request
     Authorization : `jwt ${token}`
     
-    Create survey
+  #  Create survey
     
     request- POST
     url:http://localhost:3000/surveys/
@@ -45,13 +45,13 @@ Signup
     }
     
     
-     Get All survey
+   # Get All survey
     
     request- GET
     url:http://localhost:3000/surveys/
    
    
-    Get one survey
+ #   Get one survey
     
     request- GET
     url:http://localhost:3000/surveys/60641a7c7d30385f10eaac6f
@@ -59,10 +59,10 @@ Signup
     
     
         
-    *********Question Model ********** 
+##    *********Question Model ********** 
     Authorization header required for all request
     Authorization : `jwt ${token}`
-    Create survey
+#    Create survey
     
     request- POST
     url:http://localhost:3000/questions/
@@ -73,14 +73,14 @@ Signup
     
     
     
-     Get All questions
+#     Get All questions
     
     request- GET
     url:http://localhost:3000/questions/
    
    
    
-    Get one question
+#    Get one question
     
     request- GET
     url:http://localhost:3000/questions/60641a7c7d30385f10eaac6f
@@ -88,12 +88,12 @@ Signup
     
     
          
-    *********SurveyResult Model ********** 
+  ##  *********SurveyResult Model ********** 
     Authorization header required for all request
     Authorization : `jwt ${token}`
     
     
-    Create SurveyResult
+ #   Create SurveyResult
     
     request- POST
     url:http://localhost:3000/results/
@@ -105,13 +105,13 @@ Signup
     }
     
     
-    Get All SurveyResults
+#    Get All SurveyResults
     
     request- GET
     url:http://localhost:3000/results/
    
    
-    Get one question
+#    Get one question
     
     request- GET
     url:http://localhost:3000/results/60641a7c7d30385f10eaac6f
