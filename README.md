@@ -1,42 +1,41 @@
-# SurveyAPI
-How to setup
- -Clone the repo
- -Go inside project folder and do `npm i` 
+## SurveyAPI
+# How to setup
+ Clone the repo and go inside project folder and do `npm i` 
  
-How to run
-  -`npm start`
+# How to run
+`npm start`
   
-how to test
-   -`npm test`
+# How to test
+`npm test`
+# How to use API
+ 
+ # *********User Model **********
     
- how to use API
+
+ ## login
  
- #*********User Model **********
- ##login
- 
- request- POST
- url:http://localhost:3000/users/login
- body: {
-    "email":"amit.shinde@amdev.in",
-    "password":"demo123"
-    }
- 
-##Signup
- 
- request- POST
-  url:http://localhost:3000/users/signup
- body: {
-    "email":"amit.shinde@amdev.in",
-    "password":"demo123",
-    "name":"test"
-    }
+    request- POST
+    url:http://localhost:3000/users/login
+    body: {
+     "email":"amit.shinde@amdev.in",
+     "password":"demo123"
+     }
+    
+ ## Signup
+    request- POST
+    url:http://localhost:3000/users/signup
+    body: {
+     "email":"amit.shinde@amdev.in",
+     "password":"demo123",
+     "name":"test"
+     }
     
     
-   ## *********Survey Model ********** 
+ # *********Survey Model ********** 
     Authorization header required for all request
     Authorization : `jwt ${token}`
     
-  #  Create survey
+ ##  Create survey
     
     request- POST
     url:http://localhost:3000/surveys/
@@ -45,24 +44,29 @@ how to test
     }
     
     
-   # Get All survey
+ ## Get All survey
     
     request- GET
     url:http://localhost:3000/surveys/
    
-   
- #   Get one survey
+ ## Get survey by Id
     
     request- GET
+    url:http://localhost:3000/surveys/60641a7c7d30385f10eaac6f
+    
+ ## Delete survey 
+    
+    request- DELETE
     url:http://localhost:3000/surveys/60641a7c7d30385f10eaac6f
     
     
     
         
-##    *********Question Model ********** 
+ # *********Question Model ********** 
     Authorization header required for all request
     Authorization : `jwt ${token}`
-#    Create survey
+    
+ ## Create question
     
     request- POST
     url:http://localhost:3000/questions/
@@ -73,27 +77,31 @@ how to test
     
     
     
-#     Get All questions
+ ## Get All questions
     
     request- GET
     url:http://localhost:3000/questions/
    
    
    
-#    Get one question
+ ## Get question by Id
     
     request- GET
     url:http://localhost:3000/questions/60641a7c7d30385f10eaac6f
     
     
+  ## Delete question
+    
+    request- DELETE
+    url:http://localhost:3000/questions/60641a7c7d30385f10eaac6f
     
          
-  ##  *********SurveyResult Model ********** 
+ #  *********SurveyResult Model ********** 
     Authorization header required for all request
     Authorization : `jwt ${token}`
     
     
- #   Create SurveyResult
+ ## Create SurveyResult
     
     request- POST
     url:http://localhost:3000/results/
@@ -105,18 +113,22 @@ how to test
     }
     
     
-#    Get All SurveyResults
+ ## Get All SurveyResults
     
     request- GET
     url:http://localhost:3000/results/
    
    
-#    Get one question
+ ## Get Survey Result by Id
     
     request- GET
     url:http://localhost:3000/results/60641a7c7d30385f10eaac6f
     
+ 
+  ## Delete Survey Result
     
+    request- DELETE
+    url:http://localhost:3000/results/60641a7c7d30385f10eaac6f
     
     
     
