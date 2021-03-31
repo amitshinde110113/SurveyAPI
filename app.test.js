@@ -110,7 +110,7 @@ describe("Requests with token ", () => {
             .expect(498)
     })
     it('Is should add survey', async () => {
-        const user = await await request(app)
+        const user =  await request(app)
             .post('/users/login').send({ password: "demo123", email: "test@testing.com" })
         await request(app)
             .post('/surveys/').send({ name: "My testing survey " })
@@ -118,7 +118,7 @@ describe("Requests with token ", () => {
             .expect(201)
     })
     it('Is should add question', async () => {
-        const user = await await request(app)
+        const user =  await request(app)
         .post('/users/login').send({ password: "demo123", email: "test@testing.com" })
         let survey = await request(app)
         .post('/surveys/').send({ name: "My testing survey2 " })
