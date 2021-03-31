@@ -15,7 +15,6 @@ module.exports = async (req, res, next) => {
         req.currentUser = currentUser
         next();
     } catch (e) {
-        console.log('e', e)
         const error = new Error(e.message || 'Token verification failed')
         res.status(498).json(error);
     }

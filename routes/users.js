@@ -21,7 +21,7 @@ router.post('/signup', async function (req, res, next) {
         user: result,
       });
     }).catch(err => {
-      console.log('err', err)
+       
       res.status(400).json(err);
     });
   } else {
@@ -37,7 +37,7 @@ router.post('/signup', async function (req, res, next) {
             user: result,
           });
         }).catch(err => {
-          console.log('err', err)
+           
           res.status(400).json(err);
         });
       }
@@ -72,7 +72,7 @@ router.post('/login', async function (req, res, next) {
       }
     })
     .catch(err => {
-      console.log('err', err)
+       
       res.status(404).json(err);
     });
 });

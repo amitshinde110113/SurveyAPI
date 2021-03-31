@@ -21,7 +21,7 @@ router.post('/', async function (req, res, next) {
             surveyResult: result,
         });
     }).catch(err => {
-        console.log('err', err)
+         
         res.status(400).json(err);
     });
 });
@@ -32,7 +32,7 @@ router.get('/', async function (req, res, next) {
     SurveyResultModel.find().then(async (result) => {
         res.status(201).json(result);
     }).catch(err => {
-        console.log('err', err)
+         
         res.status(400).json(err);
     });
 });
@@ -40,7 +40,7 @@ router.get('/:id', async function (req, res, next) {
     SurveyResultModel.findById(req.params.id).then(async (result) => {
         res.status(201).json(result);
     }).catch(err => {
-        console.log('err', err)
+         
         res.status(400).json(err);
     });
 });
