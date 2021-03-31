@@ -1,8 +1,6 @@
 const jwt = require('jsonwebtoken');
 const User = require('../models/userModel');
-const KEY = 'DemoKey'
-
-
+const KEY = process.env.PORT || 'DemoKey'
 module.exports = async (req, res, next) => {
     try {
         if (!req.headers.authorization) {

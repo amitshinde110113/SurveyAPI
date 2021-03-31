@@ -1,8 +1,8 @@
 var express = require('express');
 var router = express.Router();
 const bcrypt = require('bcrypt');
-const saltRounds = 10;
-const KEY = 'DemoKey'
+const saltRounds = process.env.PORT || 10;
+const KEY = process.env.PORT || 'DemoKey'
 const jwt = require('jsonwebtoken');
 const UserModel = require('../models/userModel')
 const mongoose = require('mongoose')
@@ -12,7 +12,7 @@ const mongoose = require('mongoose')
 /*  users signup. */
 router.post('/signup', async function (req, res, next) {
   const users = await UserModel.find().count()
-  const hash = await bcrypt.hash(req.body.password, 10)
+  const hash = await bcrypt.hash(req.body.password, saltRounds)
   if (!users) {
     req.body.role = 'ADMIN'
     getUser(req, hash).save().then(async (result) => {
@@ -21,38 +21,25 @@ router.post('/signup', async function (req, res, next) {
         user: result,
       });
     }).catch(err => {
-       
       res.status(400).json(err);
     });
   } else {
     UserModel.find({ email: req.body.email }).exec().then(async (result) => {
-
       if (result.length >= 1) {
         res.status(403).json({ message: 'Already exist.' })
       } else {
-
         getUser(req, hash).save().then(async (result) => {
           res.status(201).json({
             message: 'Registered successfully.',
             user: result,
           });
         }).catch(err => {
-           
           res.status(400).json(err);
         });
       }
     });
-
   }
-
 });
-
-
-
-
-
-
-
 
 
 /*  users login. */
@@ -72,7 +59,6 @@ router.post('/login', async function (req, res, next) {
       }
     })
     .catch(err => {
-       
       res.status(404).json(err);
     });
 });
