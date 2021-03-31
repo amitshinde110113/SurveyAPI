@@ -6,7 +6,7 @@ const mongoose = require('mongoose')
 
 
 
-/*  create result . */
+/*  Create survey result . */
 router.post('/', async function (req, res, next) {
     const surveyResult = new SurveyResultModel({
         _id: new mongoose.Types.ObjectId(),
@@ -25,6 +25,7 @@ router.post('/', async function (req, res, next) {
     });
 });
 
+/*  Get all survey results . */
 
 router.get('/', async function (req, res, next) {
     SurveyResultModel.find().then(async (result) => {
@@ -33,6 +34,8 @@ router.get('/', async function (req, res, next) {
         res.status(400).json(err);
     });
 });
+
+/*  Get survey result by Id . */
 
 router.get('/:id', async function (req, res, next) {
     SurveyResultModel.findById(req.params.id).then(async (result) => {
@@ -43,7 +46,15 @@ router.get('/:id', async function (req, res, next) {
 });
 
 
+/*  Delete survey result. */
 
+router.delete('/:id', async function (req, res, next) {
+    SurveyResultModel.findByIdAndDelete(req.params.id).then(async (result) => {
+        res.status(204);
+    }).catch(err => {
+        res.status(400).json(err);
+    });
+});
 
 
 

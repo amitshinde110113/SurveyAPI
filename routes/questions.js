@@ -22,7 +22,7 @@ router.post('/', async function (req, res, next) {
     });
 });
 
-
+/*  Get all question . */
 router.get('/', async function (req, res, next) {
 
     QuestionModel.find().then(async (result) => {
@@ -32,6 +32,9 @@ router.get('/', async function (req, res, next) {
         res.status(400).json(err);
     });
 });
+
+/*  Get question by Id . */
+
 router.get('/:id', async function (req, res, next) {
     QuestionModel.findById(req.params.id).then(async (result) => {
         res.status(201).json(result);
@@ -40,6 +43,9 @@ router.get('/:id', async function (req, res, next) {
         res.status(400).json(err);
     });
 });
+
+/*  Delete question . */
+
 router.delete('/:id', async function (req, res, next) {
     QuestionModel.findByIdAndDelete(req.params.id).then(async (result) => {
         res.status(204);
