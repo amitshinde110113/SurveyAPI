@@ -19,6 +19,8 @@ beforeAll(async (done) => {
     await UserSchema.findOneAndDelete({ email: "test@testing.com" })
     await QuestionSchema.findOneAndDelete({ question: "How you rate youself in cloud " })
     await SurveySchema.findOneAndDelete({ name: "My testing survey " })
+    await SurveySchema.findOneAndDelete({ name: "My testing survey2 " })
+
     done()
 })
 
@@ -116,9 +118,12 @@ describe("Requests with token ", () => {
             .expect(201)
     })
     it('Is should add question', async () => {
-        const survey = await SurveySchema.findOne();
         const user = await await request(app)
-            .post('/users/login').send({ password: "demo123", email: "test@testing.com" })
+        .post('/users/login').send({ password: "demo123", email: "test@testing.com" })
+        let survey = await request(app)
+        .post('/surveys/').send({ name: "My testing survey2 " })
+        .set('Authorization', `jwt ${user.body.token}`)
+         survey = await SurveySchema.findOne({ name: "My testing survey2 " });
         await request(app)
             .post('/questions/').send({ question: "How you rate youself in cloud ", survey: survey._id })
             .set('Authorization', `jwt ${user.body.token}`)
