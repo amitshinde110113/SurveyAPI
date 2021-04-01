@@ -20,7 +20,6 @@ beforeAll(async (done) => {
     await QuestionSchema.findOneAndDelete({ question: "How you rate youself in cloud " })
     await SurveySchema.findOneAndDelete({ name: "My testing survey " })
     await SurveySchema.findOneAndDelete({ name: "My testing survey2 " })
-
     done()
 })
 
@@ -69,7 +68,7 @@ describe("Checking initilization", () => {
 describe("Requests without token", () => {
     it('Is should Signup', async () => {
         await request(app)
-            .post('/api/users/signup').send({ password: "demo123", email: "test@testing.com" })
+            .post('/api/users/signup').send({ password: "demo123", email: "test@testing.com", role: 'ADMIN' })
             .expect(201)
     })
     it('Is should not Signup if email not unique', async () => {
@@ -110,7 +109,7 @@ describe("Requests with token ", () => {
             .expect(498)
     })
     it('Is should add survey', async () => {
-        const user =  await request(app)
+        const user = await request(app)
             .post('/api/users/login').send({ password: "demo123", email: "test@testing.com" })
         await request(app)
             .post('/api/surveys/').send({ name: "My testing survey " })
@@ -118,12 +117,12 @@ describe("Requests with token ", () => {
             .expect(201)
     })
     it('Is should add question', async () => {
-        const user =  await request(app)
-        .post('/api/users/login').send({ password: "demo123", email: "test@testing.com" })
+        const user = await request(app)
+            .post('/api/users/login').send({ password: "demo123", email: "test@testing.com" })
         let survey = await request(app)
-        .post('/api/surveys/').send({ name: "My testing survey2 " })
-        .set('Authorization', `jwt ${user.body.token}`)
-         survey = await SurveySchema.findOne({ name: "My testing survey2 " });
+            .post('/api/surveys/').send({ name: "My testing survey2 " })
+            .set('Authorization', `jwt ${user.body.token}`)
+        survey = await SurveySchema.findOne({ name: "My testing survey2 " });
         await request(app)
             .post('/api/questions/').send({ question: "How you rate youself in cloud ", survey: survey._id })
             .set('Authorization', `jwt ${user.body.token}`)

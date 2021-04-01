@@ -1,21 +1,22 @@
-var express = require('express');
-var router = express.Router();
+const express = require('express');
+const router = express.Router();
 const surveyCtrl = require('../controllers/survey')
+const checkAccess = require('../middleware/check-access')
 
 
 
 
 /*  Create survey . */
-router.post('/', surveyCtrl.create);
+router.post('/', checkAccess,surveyCtrl.create);
 
 /*  Get all surveys . */
-router.get('/',surveyCtrl.getAll );
+router.get('/',checkAccess,surveyCtrl.getAll );
 
 /*  Get survey by Id . */
 router.get('/:id', surveyCtrl.getById);
 
 /*  Delete survey . */
-router.delete('/:id', surveyCtrl.delete);
+router.delete('/:id',checkAccess, surveyCtrl.delete);
 
 
 

@@ -2,7 +2,6 @@ const QuestionModel = require('../models/questionModel')
 
 
 module.exports.createQuestion = (question) => {
-    console.log('question', question)
     question = new QuestionModel(question);
     return question.save()
 }

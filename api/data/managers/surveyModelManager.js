@@ -2,7 +2,6 @@ const SurveyModel = require('../models/surveyModel')
 
 
 module.exports.createSurvey = (survey) => {
-    console.log('survey', survey)
     survey = new SurveyModel(survey);
     return survey.save()
 }

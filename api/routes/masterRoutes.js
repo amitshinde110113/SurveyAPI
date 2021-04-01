@@ -5,6 +5,7 @@ const surveyRoutes = require('./survey');
 const surveyResultRoutes = require('./survey-result');
 const questionRoutes = require('./questions');
 const checkAuth = require('../middleware/check-auth');
+const checkAccess = require('../middleware/check-access')
 
 // User module routes
 router.use('/users', userRoutes)
@@ -13,7 +14,7 @@ router.use('/users', userRoutes)
 router.use('/surveys', checkAuth, surveyRoutes)
 
 // Questions module routes
-router.use('/questions', checkAuth, questionRoutes)
+router.use('/questions', checkAuth, checkAccess, questionRoutes)
 
 // Results module routes
 router.use('/results', checkAuth, surveyResultRoutes)

@@ -1,6 +1,6 @@
 
 const mongoose = require('mongoose');
-var timestamps = require('mongoose-timestamp');
+const timestamps = require('mongoose-timestamp');
 const resultSchema = mongoose.Schema({
     rating: { type: String },
     survey: {

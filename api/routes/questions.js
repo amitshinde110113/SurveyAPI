@@ -1,11 +1,10 @@
-var express = require('express');
-var router = express.Router();
+const express = require('express');
+const router = express.Router();
 const questionCtrl = require('../controllers/questions')
 
 
-
 /*  Create question . */
-router.post('/', questionCtrl.create);
+router.post('/',  questionCtrl.create);
 
 /*  Get all question . */
 router.get('/', questionCtrl.getAll);
