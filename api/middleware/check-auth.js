@@ -1,14 +1,15 @@
 const jwt = require('jsonwebtoken');
-const User = require('../models/userModel');
-const KEY = process.env.PORT || 'DemoKey'
+const { getUser } = require('../data/managers/userModelManager');
+const { jwtSecret } = require('../../config')
+
 module.exports = async (req, res, next) => {
     try {
         if (!req.headers.authorization) {
             throw new Error('Token Missing')
         }
         const token = req.headers.authorization.split(" ")[1];
-        const decodes = jwt.verify(token, KEY);
-        let currentUser = await User.findById(decodes.userID)
+        const decodes = jwt.verify(token, jwtSecret);
+        let currentUser = await getUser({ _id: decodes.userID })
         req.userData = decodes;
         req.currentUser = currentUser
         next();
