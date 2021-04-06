@@ -12,7 +12,9 @@ module.exports.getUser = (query) => {
 module.exports.getAllUsers = () => {
     return UserModel.find();
 }
-
+module.exports.updateUser = (query,body) => {
+    return UserModel.findOneAndUpdate(query,body,{new:true});
+}
 module.exports.deleteUser = (id) => {
     return UserModel.findByIdAndDelete(id);
 }

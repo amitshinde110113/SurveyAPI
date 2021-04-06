@@ -1,5 +1,5 @@
 
-const { getSurveyResult, getAllSurveyResults, deleteSurveyResult, createSurveyResult } = require('../data/managers/surveyResultsManager')
+const { getSurveyResult, getAllSurveyResults, deleteSurveyResult, createSurveyResult,updateSurveyResult } = require('../data/managers/surveyResultsManager')
 
 
 
@@ -11,7 +11,7 @@ exports.create = (req, res, next) => {
         user: req.currentUser._id,
         rating: req.body.rating
     };
-    createSurveyResult(surveyResult).then(async (result) => {
+    createSurveyResult(surveyResult).then( (result) => {
         res.status(201).json({
             message: 'Recorded successfully.',
             surveyResult: result,
@@ -25,25 +25,36 @@ exports.create = (req, res, next) => {
 
 /*  Get all survey results . */
 exports.getAll = (req, res, next) => {
-    getAllSurveyResults().then(async (result) => {
-        res.status(201).json(result);
+    getAllSurveyResults().then( (result) => {
+        res.status(200).json(result);
     }).catch(err => {
         res.status(400).json(err);
     });
 }
+
 /*  Get survey result by Id . */
 exports.getById = (req, res, next) => {
     const query = { _id: req.params.id }
-    getSurveyResult(query).then(async (result) => {
-        res.status(201).json(result);
+    getSurveyResult(query).then( (result) => {
+        res.status(200).json(result);
     }).catch(err => {
         res.status(400).json(err);
     });
 }
+/*  Update survey result . */
+exports.update = (req, res, next) => {
+    const query = { _id: req.params.id }
+    updateSurveyResult(query,req.body).then( (result) => {
+        res.status(200).json(result);
+    }).catch(err => {
+        res.status(400).json(err);
+    });
+}
+
 /*  Delete survey result. */
 exports.delete = (req, res, next) => {
-    deleteSurveyResult(req.params.id).then(async (result) => {
-        res.status(204);
+    deleteSurveyResult(req.params.id).then( (result) => {
+        res.status(204).json(result);
     }).catch(err => {
         res.status(400).json(err);
     });

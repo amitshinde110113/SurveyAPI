@@ -12,7 +12,9 @@ module.exports.getSurveyResult = (query) => {
 module.exports.getAllSurveyResults = () => {
     return SurveyResultModel.find();
 }
-
+module.exports.updateSurveyResult = (query,body) => {
+    return SurveyResultModel.findOneAndUpdate(query,body,{new:true});
+}
 module.exports.deleteSurveyResult = (id) => {
     return SurveyResultModel.findByIdAndDelete(id);
 }
