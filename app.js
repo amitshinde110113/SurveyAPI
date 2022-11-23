@@ -35,7 +35,7 @@ app.use((error, req, res, next) => {
   res.json({ error });
 });
 
-app.listen(3000, "localhost", () => {
+app.listen(3000, () => {
   console.log(`listening on ${3000}:${"port"}`);
 });
 module.exports = app;
