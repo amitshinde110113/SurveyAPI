@@ -1,7 +1,7 @@
 const express = require("express");
 // const logger = require("morgan");
 // const masterRouters = require('./api/routes/masterRoutes');
-const { port, host } = require("./config");
+// const { port, host } = require("./config");
 // const dbConfig = require('./api/data/dbconfig')
 
 const app = express();
@@ -33,7 +33,7 @@ app.use((error, req, res, next) => {
   res.json({ error });
 });
 
-app.listen(port, host, () => {
-  console.log(`listening on ${host}:${port}`);
+app.listen(3000, "localhost", () => {
+  console.log(`listening on ${3000}:${"port"}`);
 });
 module.exports = app;
