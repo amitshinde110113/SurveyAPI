@@ -9,7 +9,9 @@ const app = express();
 app.use(express.json());
 app.use(express.urlencoded({ extended: false }));
 // app.use("/api", masterRouters);
-
+app.get("/", (req, res, next) => {
+  res.status(200).json({ message: "G0t Success" });
+});
 app.post("/api/post", (req, res, next) => {
   res.status(200).json({ message: "Post Success" });
 });
